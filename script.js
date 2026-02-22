@@ -400,3 +400,28 @@ function openSlider(index) {
 
     pswp.init();
 }
+
+document.getElementById('orderForm').addEventListener('submit', (event) => {    
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+    let contact = "+918160365513";
+    let postLink = window.location.href;
+
+    const name = formData.get("name") || "Customer";
+    let message = `New message from ${name}\n\n`;
+
+    formData.forEach((value, key) => { let label = key.charAt(0).toUpperCase() + key.slice(1); message += `*${label}:* ${value}\n`; });
+
+    message += `\n=============================\n`; message += `*Form:* ${postLink}\n`; message += `=============================`;
+
+    const encodedMessage = encodeURI(message);
+
+    var link;
+
+    link = `https://api.whatsapp.com/send/?phone=${contact}&text=${encodedMessage}`
+
+    window.open(link, '_blank');
+
+    form.reset();
+})

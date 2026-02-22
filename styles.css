@@ -1523,6 +1523,51 @@ body.nav-open .hamburger-line:nth-child(3) {
   animation: floatSection 6s ease-in-out infinite;
 }
 
+.flavor-chocolate {
+  background: #5A3825;
+  color: #fff;
+}
+
+.flavor-vanilla {
+  background: #FFF3C4;
+  color: #5A4A2E;
+}
+
+.flavor-red-velvet {
+  background: #B11226;
+  color: #fff;
+}
+
+.flavor-butterscotch {
+  background: #E6A84A;
+  color: #3B2A14;
+}
+
+.flavor-black-forest {
+  background: #2B1B17;
+  color: #fff;
+}
+
+.flavor-strawberry {
+  background: #FF4D6D;
+  color: #fff;
+}
+
+.flavor-blueberry {
+  background: #4C6EDB;
+  color: #fff;
+}
+
+.flavor-pineapple {
+  background: #FFD60A;
+  color: #5A4A00;
+}
+
+.flavor-custom {
+  background: #E0E0E0;
+  color: #333;
+}
+
 @keyframes floatSection {
 
   0%,
@@ -1557,22 +1602,10 @@ body.nav-open .hamburger-line:nth-child(3) {
   gap: 1.5rem;
   max-width: 900px;
   margin: 0 auto;
-
-  @media (max-width: 768px) {
-    display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
-  gap: 1.5rem;
-  max-width: 900px;
-  margin: 0 auto;
-  justify-items: center;  /* center items horizontally inside grid cells */
-  align-items: center; 
-  }
 }
 
 .flavor-badge {
   padding: 16px;
-  background: white;
-  color: var(--primary-dark);
   border-radius: 100px;
   font-weight: 700;
   font-size: 1.05rem;
@@ -1970,7 +2003,7 @@ body.nav-open .hamburger-line:nth-child(3) {
 
 .testimonial-tag {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.80rem;
   color: var(--muted);
 }
 

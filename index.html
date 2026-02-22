@@ -510,17 +510,17 @@
               </div>
             </div>
           </div>
-          <p class="order-note">We recommend ordering at least 1–2 days in advance. For wedding cakes, please contact us
-            2–3 days before your date.</p>
+          <p class="order-note">We recommend ordering at least 1-2 days in advance. For wedding cakes, please contact us
+            2-3 days before your date.</p>
         </div>
-        <form class="order-form">
+        <form class="order-form" id="orderForm" action="#">
           <div class="form-group">
             <label for="name">Name</label>
             <input id="name" name="name" type="text" placeholder="Your name" required />
           </div>
           <div class="form-group">
-            <label for="contact">Phone or Email</label>
-            <input id="contact" name="contact" type="text" placeholder="How can we contact you?" required />
+            <label for="contact">Email</label>
+            <input id="email" name="email" type="email" placeholder="Enter your email" required />
           </div>
           <div class="form-group">
             <label for="date">Event Date</label>
@@ -530,7 +530,7 @@
             <label for="occasion">Occasion</label>
             <input id="occasion" name="occasion" type="text" placeholder="Birthday, wedding, etc." />
           </div>
-          <button type="submit" class="btn btn-primary btn-full" disabled>Send Request</button>
+          <button type="submit" class="btn btn-primary btn-full">Send Request</button>
           </p>
         </form>
       </div>
