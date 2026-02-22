@@ -305,80 +305,26 @@ document.addEventListener('DOMContentLoaded', () => {
     initTopPicksShowcase();
 });
 
+let items = [];
 
-// document.addEventListener("DOMContentLoaded", function () {
-//     const galleryEl = document.getElementById("birthday-gallery");
-//     const viewMoreBtn = document.getElementById("birthday-view-more");
+function getBtnData(e) {
+    const cakeType = e.target.dataset["category"];
 
-//     let items = [];
-
-//     // Load images from JSON
-//     fetch("wedding.json")
-//     .then(res => res.json())
-//     .then(data => {
-//     items = data.images;
-
-//     });
-
-//     // Function to open PhotoSwipe
-//     function openGallery(index) {
-//     const pswp = new PhotoSwipe({
-//     dataSource: items,
-//     index: index,
-//     showHideAnimationType: 'zoom'
-//     });
-
-//     pswp.on('uiRegister', function() {
-//         pswp.ui.registerElement({
-//         name: 'custom-caption',
-//         order: 9,
-//         isButton: false,
-//         appendTo: 'root',
-//         html: '',
-//         onInit: (el, pswp) => {
-//         pswp.on('change', () => {
-//         const currSlide = pswp.currSlide.data;
-//         el.innerHTML = currSlide.title || '';
-//         });
-//         }
-//         });
-//     });
-//     pswp.init();
-//     }
-
-//     // Click thumbnail → open slider
-//     galleryEl.addEventListener("click", (e) => {
-//     if (e.target.tagName === "IMG") {
-//     const index = parseInt(e.target.dataset.index);
-//     openGallery(index);
-//     }
-//     });
-
-//     // View More → open from first image
-//     viewMoreBtn.addEventListener("click", () => {
-//     openGallery(0);
-//     });
-// });
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById("gallery-modal");
-    const openBtn = document.getElementById("open-gallery");
     const closeBtn = document.getElementById("close-gallery");
     const galleryEl = document.getElementById("birthday-gallery");
 
-    let items = [];
-
-    // Load JSON
-    fetch("wedding.json")
+    // Load JSON only when button is clicked
+    fetch(`assets/json/${cakeType}.json`)
         .then(res => res.json())
         .then(data => {
             items = data.images;
             renderGallery();
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden";
         });
 
-    // Render thumbnails inside popup
+    // Render thumbnails
     function renderGallery() {
         galleryEl.innerHTML = '';
 
@@ -388,64 +334,52 @@ document.addEventListener("DOMContentLoaded", function () {
             img.dataset.index = index;
             galleryEl.appendChild(img);
         });
-
     }
-
-    // Open popup
-    openBtn.addEventListener("click", () => {
-        modal.style.display = "block";
-        document.body.style.overflow = "hidden"
-    });
 
     // Close popup
-    closeBtn.addEventListener("click", () => {
+    closeBtn.onclick = () => {
         modal.style.display = "none";
-        document.body.style.overflow = "visible"
-    });
+        document.body.style.overflow = "visible";
+    };
 
     // Click outside to close
-    window.addEventListener("click", (e) => {
-        if (e.target === modal) {
+    window.onclick = (event) => {
+        if (event.target === modal) {
             modal.style.display = "none";
-            document.body.style.overflow = "visible"
+            document.body.style.overflow = "visible";
         }
-    });
+    };
 
     // Open PhotoSwipe slider
-    function openSlider(index) {
-        const pswp = new PhotoSwipe({
-            dataSource: items,
-            index: index,
-            showHideAnimationType: 'zoom'
-        });
-
-
-        // Caption
-        pswp.on('uiRegister', function () {
-            pswp.ui.registerElement({
-                name: 'custom-caption',
-                order: 9,
-                appendTo: 'root',
-                html: '',
-                onInit: (el, pswp) => {
-                    pswp.on('change', () => {
-                        const curr = pswp.currSlide.data;
-                        el.innerHTML = curr.title || '';
-                    });
-                }
-            });
-        });
-
-        pswp.init();
-
-
-    }
-
-    galleryEl.addEventListener("click", (e) => {
-        if (e.target.tagName === "IMG") {
-            const index = parseInt(e.target.dataset.index);
+    galleryEl.onclick = (event) => {
+        if (event.target.tagName === "IMG") {
+            const index = parseInt(event.target.dataset.index);
             openSlider(index);
         }
-    });
-});
+    };
+}
 
+function openSlider(index) {
+    const pswp = new PhotoSwipe({
+        dataSource: items,
+        index: index,
+        showHideAnimationType: 'zoom'
+    });
+
+    pswp.on('uiRegister', function () {
+        pswp.ui.registerElement({
+            name: 'custom-caption',
+            order: 9,
+            appendTo: 'root',
+            html: '',
+            onInit: (el, pswp) => {
+                pswp.on('change', () => {
+                    const curr = pswp.currSlide.data;
+                    el.innerHTML = curr.title || '';
+                });
+            }
+        });
+    });
+
+    pswp.init();
+}
