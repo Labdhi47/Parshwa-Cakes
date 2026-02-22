@@ -238,6 +238,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+
+    // Initialize Testimonials Slider
+    initSlider({
+        containerSelector: '.testimonial-slider-container',
+        trackSelector: '.testimonial-track',
+        prevSelector: '.testimonials-prev',
+        nextSelector: '.testimonials-next',
+        dotsSelector: '.testimonials-dots',
+        itemSelector: '.testimonial-card',
+        responsive: {
+            mobile: 1,
+            tablet: 2,
+            desktop: 3
+        }
+    });
+
     // Top Picks Showcase Auto-Slider
     const initTopPicksShowcase = () => {
         const showcase = document.querySelector('.top-picks-showcase');
@@ -337,7 +353,8 @@ function getBtnData(e) {
     }
 
     // Close popup
-    closeBtn.onclick = () => {
+    closeBtn.onclick = (e) => {
+        e.stopPropagation();
         modal.style.display = "none";
         document.body.style.overflow = "visible";
     };
