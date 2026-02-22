@@ -3,7 +3,7 @@
 A simple and responsive static website built using HTML, CSS, and JavaScript.
 This project is lightweight, fast, and easy to deploy on any static hosting platform.
 
-📌 Features
+## Features
 
 ✅ Fully responsive design
 
@@ -16,3 +16,11 @@ This project is lightweight, fast, and easy to deploy on any static hosting plat
 ✅ Organized folder structure
 
 ✅ Easy to customize
+
+## Technologies Used
+
+HTML5 – Structure
+
+CSS3 – Styling & Layout (Flexbox/Grid)
+
+JavaScript (Vanilla JS) – Interactivity
