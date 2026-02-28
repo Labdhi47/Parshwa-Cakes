@@ -413,8 +413,6 @@ document.getElementById('orderForm').addEventListener('submit', (event) => {
 
     formData.forEach((value, key) => { let label = key.charAt(0).toUpperCase() + key.slice(1); message += `*${label}:* ${value}\n`; });
 
-    message += `\n=============================\n`; message += `*Form:* ${postLink}\n`; message += `=============================`;
-
     const encodedMessage = encodeURI(message);
 
     var link;

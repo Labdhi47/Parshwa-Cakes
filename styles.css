@@ -1771,32 +1771,62 @@ body.nav-open .hamburger-line:nth-child(3) {
 
 
 .btn-view-more {
-  align-self: flex-start;
-  margin-bottom: 2rem;
-  padding: 0.6rem 2rem;
-  background: #f0088c;
-  color: var(--bg);
-  border: none;
-  border-radius: var(--radius-pill);
-  font-size: 0.95rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  box-shadow: 0 4px 12px rgba(12, 46, 119, 0.05);
+ font-weight: 600;
+ color: white;
+ text-transform: uppercase;
+ padding: 1.25em 2em;
+ background: #dc0981;
+ border: 2px solid white;
+ -webkit-transform-style: preserve-3d;
+ transform-style: preserve-3d;
+ margin-bottom: 2rem;
+ margin-top: 1rem;
+ -webkit-transition: background 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
+ transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+.btn-view-more::before {
+ position: absolute;
+ content: '';
+ width: 100%;
+ height: 100%;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background: var(--primary);
+ border-radius: inherit;
+ -webkit-box-shadow: 0 0 0 2px #b18597, 0 0.625em 0 0 #ffe3e2;
+ box-shadow: 0 0 0 2px #b18597, 0 0.625em 0 0 #ffe3e2;
+ -webkit-transform: translate3d(0, 0.75em, -1em);
+ transform: translate3d(0, 0.75em, -1em);
+ transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
 }
 
 .btn-view-more:hover {
-  background: #dc0981;
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(12, 46, 119, 0.15);
+ background: #dc0981;
+ -webkit-transform: translate(0, 0.25em);
+ transform: translate(0, 0.25em);
+}
+
+.btn-view-more::before {
+ -webkit-box-shadow: 0 0 0 2px #b18597, 0 0.5em 0 0 #ffe3e2;
+ box-shadow: 0 0 0 2px #b18597, 0 0.5em 0 0 #ffe3e2;
+ -webkit-transform: translate3d(0, 0.5em, -1em);
+ transform: translate3d(0, 0.5em, -1em);
 }
 
 .btn-view-more:active {
-  transform: translateY(0);
+ background: #ffe9e9;
+ -webkit-transform: translate(0em, 0.75em);
+ transform: translate(0em, 0.75em);
+}
+
+.btn-view-more:active::before {
+ -webkit-box-shadow: 0 0 0 2px #b18597, 0 0 #ffe3e2;
+ box-shadow: 0 0 0 2px #b18597, 0 0 #ffe3e2;
+ -webkit-transform: translate3d(0, 0, -1em);
+ transform: translate3d(0, 0, -1em);
 }
 
 
@@ -2271,6 +2301,32 @@ body.nav-open .hamburger-line:nth-child(3) {
   animation: slideInDown 0.4s ease-out;
 }
 
+.faq .section-title-small-screen {
+  @media (min-width: 768px) {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    display: flex;
+    font-size: 2.8rem;
+    margin: 0 0 1rem;
+    font-family: "Playfair Display", serif;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.faq .section-title {
+  display: flex;
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
 @keyframes slideInDown {
   from {
     opacity: 0;
@@ -2598,6 +2654,20 @@ body.nav-open .hamburger-line:nth-child(3) {
   font-weight: 700;
 }
 
+.cake-card-row .card-content .card-content-heading {
+  display: flex;
+   @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.cake-card-row .card-content h3 {
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 /* Checkerboard Layout: Even items have reversed direction */
 .cake-card-row:nth-child(even) {
   flex-direction: row-reverse;
@@ -2624,9 +2694,15 @@ body.nav-open .hamburger-line:nth-child(3) {
   }
 }
 
+.cake-card-row .card-content .card-meta {
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+}
+
 .cake-card-row .card-meta {
   font-weight: 700;
-  color: var(--accent);
+  color:  var(--primary-hover);
   font-size: 1.1rem;
   margin-top: auto;
   text-transform: uppercase;
@@ -2650,7 +2726,7 @@ body.nav-open .hamburger-line:nth-child(3) {
   }
 
   .cake-card-row .card-content {
-    padding: 2rem;
+    padding: 1.5rem;
     width: 100%;
     flex: none;
   }
