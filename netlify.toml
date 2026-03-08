@@ -4,6 +4,6 @@ package = "@netlify/plugin-sitemap"
   buildDir = "."
 
 [[redirects]]
-  from = "/assets/*"
-  to = "/.netlify/images?url=/assets/:splat"
+  from = "/assets/:file"
+  to = "/.netlify/images?url=/assets/:file"
   status = 200  
