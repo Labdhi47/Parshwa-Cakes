@@ -347,6 +347,7 @@ function getBtnData(e) {
         items.forEach((item, index) => {
             const img = document.createElement("img");
             img.src = item.src;
+            img.loading = "lazy";
             img.dataset.index = index;
             galleryEl.appendChild(img);
         });
